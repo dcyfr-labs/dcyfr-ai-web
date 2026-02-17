@@ -8,7 +8,7 @@ Perfect for building modern web applications with type-safe APIs, server-side re
 
 ## Features
 
-✅ **Modern Stack** — Next.js 14 App Router with TypeScript 5.7+  
+✅ **Modern Stack** — Next.js 15 App Router with TypeScript 5.7+  
 ✅ **Database** — Drizzle ORM with SQLite (dev) / PostgreSQL (production)  
 ✅ **Authentication** — JWT-based auth with httpOnly cookies  
 ✅ **Validation** — Zod schemas for all API inputs  
@@ -21,7 +21,7 @@ Perfect for building modern web applications with type-safe APIs, server-side re
 
 | Category | Technology | Version |
 |----------|-----------|---------|
-| Framework | Next.js (App Router) | 14.x |
+| Framework | Next.js (App Router) | 15.x |
 | Language | TypeScript | 5.7+ |
 | Styling | Tailwind CSS | 3.4 |
 | UI Components | Shadcn/ui pattern | - |
