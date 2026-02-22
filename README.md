@@ -6,6 +6,35 @@ Perfect for building modern web applications with type-safe APIs, server-side re
 
 > **📦 Starter Template** — This is a **starter template** for cloning, not an npm package. Use `git clone` or download the source to create your own full-stack web application. This package is marked `private: true` and is not published to npm.
 
+---
+
+## ⚡ 30-Second Quick Start
+
+```bash
+# Clone template
+npx degit dcyfr/dcyfr-ai-web my-web-app
+cd my-web-app
+
+# Install and start
+npm install
+npm run db:migrate && npm run db:seed
+npm run dev
+# ✅ Full-stack app at http://localhost:3000
+```
+
+---
+
+## 🧭 Related Packages
+
+| Package | Purpose | Type |
+|---------|---------|------|
+| [@dcyfr/ai](../dcyfr-ai) | Core AI framework | npm package |
+| [@dcyfr/ai-react](../dcyfr-ai-react) | React SPA template | Template |
+| [@dcyfr/ai-api](../dcyfr-ai-api) | REST API template | Template |
+| [dcyfr-labs](../dcyfr-labs) | Production Next.js app | Application |
+
+---
+
 ## Features
 
 ✅ **Modern Stack** — Next.js 15 App Router with TypeScript 5.7+  
