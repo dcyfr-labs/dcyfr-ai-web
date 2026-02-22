@@ -33,3 +33,8 @@ npm run db:seed       # Seed data
 - Lib: errors (7), auth (5), utils (9), schemas (14)
 - Services: user (9), post (10)
 - Components: button (6), input (5), card (2), badge+spinner (6)
+
+## Quality Gates
+- TypeScript: 0 errors (`npm run typecheck`)
+- Tests: ≥99% pass rate (`npm run test`)
+- Lint: 0 errors (`npm run lint`)
