@@ -1,21 +1,26 @@
 # @dcyfr/ai-web
 
+> **⚠️ PACKAGE DEPRECATED ON NPM (February 27, 2026)**  
+> This package was published to npm but has been **deprecated**. It is a starter template, not a library.  
+> **Use this repo as:**
+> - 📋 GitHub Template: Click "Use this template" above
+> - 📦 Direct clone: `git clone https://github.com/dcyfr/dcyfr-ai-web`
+> - 🚀 Degit: `npx degit dcyfr/dcyfr-ai-web my-app`
+>
+> This package is now marked `"private": true` to prevent future publication.
+
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/dcyfr/dcyfr-ai-web)
 
 [![Next.js](https://img.shields.io/badge/Next.js-15+-black?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Drizzle](https://img.shields.io/badge/Drizzle-ORM-C5F74F?style=flat-square&logo=drizzle&logoColor=black)](https://orm.drizzle.team/)
-[![Full Stack](https://img.shields.io/badge/Type-Full%20Stack-informational?style=flat-square)](https://github.com/dcyfr)
-[![Template](https://img.shields.io/badge/Template-Starter-blue?style=flat-square&logo=github)](https://github.com/dcyfr)
-[![Sponsor](https://img.shields.io/badge/sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/dcyfr)
+[![Template](https://img.shields.io/badge/Type-Template-blue?style=flat-square&logo=github)](https://github.com/dcyfr/dcyfr-ai-web)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 **Production-ready full-stack Next.js web application template** with App Router, Drizzle ORM, JWT authentication, and Tailwind CSS.
 
 Perfect for building modern web applications with type-safe APIs, server-side rendering, and production-grade architecture patterns.
-
-> **📦 Starter Template** — This is a **starter template** for cloning, not an npm package. Use `git clone` or download the source to create your own full-stack web application. This package is marked `private: true` and is not published to npm.
 
 ---
 
