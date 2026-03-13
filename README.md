@@ -3,6 +3,7 @@
 > **⚠️ PACKAGE DEPRECATED ON NPM (February 27, 2026)**  
 > This package was published to npm but has been **deprecated**. It is a starter template, not a library.  
 > **Use this repo as:**
+>
 > - 📋 GitHub Template: Click "Use this template" above
 > - 📦 Direct clone: `git clone https://github.com/dcyfr/dcyfr-ai-web`
 > - 🚀 Degit: `npx degit dcyfr/dcyfr-ai-web my-app`
@@ -82,6 +83,9 @@ npm run dev
 # Install dependencies
 npm install
 
+# If Node 24 cannot load better-sqlite3 on your machine
+npm run native:sqlite:ensure
+
 # Run database migrations
 npm run db:migrate
 
@@ -111,7 +115,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 
 ## Project Structure
 
-```
+```text
 src/
 ├── app/                    # Next.js App Router
 │   ├── layout.tsx         # Root layout with Navbar + Footer
@@ -200,6 +204,16 @@ npm run test:run        # Run all tests (73 tests)
 npm run test            # Watch mode
 npm run test:coverage   # With coverage report
 ```
+
+### Native SQLite note
+
+On some Node 24 Linux/macOS environments, `better-sqlite3` may need a native rebuild before database-backed tasks can run. Use:
+
+```bash
+npm run native:sqlite:ensure
+```
+
+The script automatically prefers `clang`/`clang++` when available, which avoids the GCC 13 internal compiler error we have seen while compiling SQLite from source.
 
 ### Test Coverage
 
