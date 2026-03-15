@@ -60,7 +60,7 @@
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.27",
-    "drizzle-kit": "^1.0.0-beta.9-e89174b",
+    "drizzle-kit": "^1.0.0-beta.18-5ffac6d",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.1.6",
     "jsdom": "^28.1.0",
