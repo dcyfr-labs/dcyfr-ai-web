@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@dcyfr/utils';
 
 interface BadgeProps {
   variant?: 'default' | 'secondary' | 'destructive' | 'outline';
