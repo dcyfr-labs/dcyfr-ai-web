@@ -24,8 +24,8 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
-    --font-sans: system-ui, -apple-system, sans-serif;
-    --font-mono: ui-monospace, monospace;
+    --font-sans: 'Geist Sans', var(--font-geist-sans, ui-sans-serif), system-ui, sans-serif;
+    --font-mono: 'Geist Mono', var(--font-geist-mono, ui-monospace), monospace;
   }
 
   .dark {
@@ -55,6 +55,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

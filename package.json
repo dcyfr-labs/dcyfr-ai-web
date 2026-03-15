@@ -5,9 +5,10 @@
   "description": "Production-ready full-stack Next.js web application template with App Router, Drizzle ORM, JWT auth, and Tailwind CSS",
   "scripts": {
     "native:sqlite:ensure": "node scripts/ensure-native-sqlite.mjs",
+    "copy-brand-assets": "node scripts/copy-brand-assets.mjs",
     "predev": "npm run native:sqlite:ensure",
     "dev": "next dev",
-    "prebuild": "npm run native:sqlite:ensure",
+    "prebuild": "npm run native:sqlite:ensure && npm run copy-brand-assets",
     "build": "next build",
     "prestart": "npm run native:sqlite:ensure",
     "start": "next start",
@@ -31,7 +32,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "bcryptjs": "^3.0.3",
+    "@dcyfr/design-system": "*",
+    "@dcyfr/utils": "*",
+    "bcryptjs": "^2.4.3",
     "better-sqlite3": "^11.8.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

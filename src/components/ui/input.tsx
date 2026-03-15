@@ -1,5 +1,5 @@
 import { forwardRef, type InputHTMLAttributes } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@dcyfr/utils';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
