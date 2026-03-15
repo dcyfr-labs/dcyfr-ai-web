@@ -59,7 +59,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.4.27",
     "drizzle-kit": "^1.0.0-beta.9-e89174b",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.1.6",
