@@ -23,6 +23,15 @@
 
 Perfect for building modern web applications with type-safe APIs, server-side rendering, and production-grade architecture patterns.
 
+## About DCYFR
+
+`@dcyfr/ai-web` is maintained by **DCYFR Labs** as part of the DCYFR starter template portfolio.
+
+- **DCYFR** is a registered trademark of DCYFR Labs.
+- Primary domain: [www.dcyfr.ai](https://www.dcyfr.ai)
+- Trademark guidance: [../TRADEMARK.md](../TRADEMARK.md)
+- Licensing details: [LICENSE](./LICENSE)
+
 ---
 
 ## ⚡ 30-Second Quick Start

@@ -76,7 +76,7 @@ function rebuildBetterSqlite3(cwd) {
   console.log(
     usingClang
       ? `🔧 Rebuilding better-sqlite3 in ${cwd} with clang toolchain...`
-      : `🔧 Rebuilding better-sqlite3 in ${cwd}...`
+      : `🔧 Rebuilding better-sqlite3 in ${cwd}...`,
   );
 
   const result = spawnSync(npmCmd, ['rebuild', 'better-sqlite3'], {
