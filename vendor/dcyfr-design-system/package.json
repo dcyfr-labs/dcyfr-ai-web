@@ -2,6 +2,14 @@
   "name": "@dcyfr/design-system",
   "version": "0.0.0-local",
   "private": true,
+  "exports": {
+    "./css/fonts.css": "./css/fonts.css",
+    "./css/brand-variables.css": "./css/brand-variables.css",
+    "./tailwind": {
+      "types": "./tailwind.d.ts",
+      "default": "./tailwind.js"
+    }
+  },
   "sideEffects": [
     "*.css",
     "css/*.css"
