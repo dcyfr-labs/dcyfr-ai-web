@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { verifyToken } from '@/lib/auth';
 import { PostService } from '@/services';
 import { Card, CardHeader, CardTitle, CardContent, Badge } from '@/components/ui';
-import { formatDate } from '@/lib/utils';
+import { formatDate } from '@dcyfr/utils';
 
 export const dynamic = 'force-dynamic';
 

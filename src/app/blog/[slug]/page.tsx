@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { PostService } from '@/services';
 import { Badge } from '@/components/ui';
-import { formatDate } from '@/lib/utils';
+import { formatDate } from '@dcyfr/utils';
 
 export const dynamic = 'force-dynamic';
 

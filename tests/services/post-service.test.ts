@@ -44,7 +44,9 @@ describe('PostService', () => {
   });
 
   it('throws NotFoundError for missing post', async () => {
-    await expect(postService.findById(999)).rejects.toThrow('not found');
+    await expect(postService.findById(999)).rejects.toMatchObject({
+      message: expect.stringContaining('not found'),
+    });
   });
 
   it('finds post by slug', async () => {
@@ -89,9 +91,9 @@ describe('PostService', () => {
       content: 'Content',
       authorId: userId,
     });
-    await expect(postService.update(post.id, 999, { title: 'Hack' })).rejects.toThrow(
-      'Not the post owner',
-    );
+    await expect(postService.update(post.id, 999, { title: 'Hack' })).rejects.toMatchObject({
+      message: expect.stringContaining('Not the post owner'),
+    });
   });
 
   it('deletes post by owner', async () => {
@@ -101,7 +103,9 @@ describe('PostService', () => {
       authorId: userId,
     });
     await postService.delete(post.id, userId);
-    await expect(postService.findById(post.id)).rejects.toThrow('not found');
+    await expect(postService.findById(post.id)).rejects.toMatchObject({
+      message: expect.stringContaining('not found'),
+    });
   });
 
   it('rejects delete by non-owner', async () => {
@@ -110,6 +114,8 @@ describe('PostService', () => {
       content: 'Content',
       authorId: userId,
     });
-    await expect(postService.delete(post.id, 999)).rejects.toThrow('Not the post owner');
+    await expect(postService.delete(post.id, 999)).rejects.toMatchObject({
+      message: expect.stringContaining('Not the post owner'),
+    });
   });
 });

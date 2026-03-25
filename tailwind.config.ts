@@ -1,6 +1,8 @@
 import type { Config } from 'tailwindcss';
+import designSystemPreset from '@dcyfr/design-system/tailwind';
 
 const config: Config = {
+  presets: [designSystemPreset],
   darkMode: 'class',
   content: [
     './src/app/**/*.{ts,tsx}',
