@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { getTestDb, resetTestDb } from '../helpers';
+import { getTestDb } from '../helpers';
 import { UserService } from '@/services/user-service';
 import type { DbInstance } from '@/db/connection';
 
@@ -35,7 +35,9 @@ describe('UserService', () => {
   });
 
   it('throws NotFoundError for missing user', async () => {
-    await expect(service.findById(999)).rejects.toThrow('not found');
+    await expect(service.findById(999)).rejects.toMatchObject({
+      message: expect.stringContaining('not found'),
+    });
   });
 
   it('finds user by email (includes passwordHash)', async () => {
@@ -65,7 +67,9 @@ describe('UserService', () => {
     await service.create({ email: 'dup@test.com', name: 'First', password: 'password123' });
     await expect(
       service.create({ email: 'dup@test.com', name: 'Second', password: 'password123' }),
-    ).rejects.toThrow('already registered');
+    ).rejects.toMatchObject({
+      message: expect.stringContaining('already registered'),
+    });
   });
 
   it('updates a user', async () => {
@@ -85,6 +89,8 @@ describe('UserService', () => {
       password: 'password123',
     });
     await service.delete(created.id);
-    await expect(service.findById(created.id)).rejects.toThrow('not found');
+    await expect(service.findById(created.id)).rejects.toMatchObject({
+      message: expect.stringContaining('not found'),
+    });
   });
 });

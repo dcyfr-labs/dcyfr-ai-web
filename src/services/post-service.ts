@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
 import { db, posts, type Post, type AppDb } from '@/db';
-import { slugify } from '@/lib/utils';
+import { slugify } from '@dcyfr/utils';
 import { NotFoundError, ForbiddenError } from '@/lib/errors';
 
 export class PostService {

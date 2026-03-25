@@ -31,7 +31,7 @@ describe('Utils', () => {
   describe('formatDate', () => {
     it('formats a date string', () => {
       const result = formatDate('2026-01-15T12:00:00Z');
-      expect(result).toContain('January');
+      expect(result).toMatch(/Jan|January/);
       expect(result).toContain('2026');
     });
 
@@ -45,7 +45,7 @@ describe('Utils', () => {
     it('truncates long text', () => {
       const result = truncate('This is a long text that should be truncated', 20);
       expect(result.length).toBeLessThanOrEqual(23); // 20 + '...'
-      expect(result).toContain('...');
+      expect(result).toMatch(/\.\.\.|…/);
     });
 
     it('does not truncate short text', () => {

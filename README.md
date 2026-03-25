@@ -23,6 +23,15 @@
 
 Perfect for building modern web applications with type-safe APIs, server-side rendering, and production-grade architecture patterns.
 
+## About DCYFR
+
+`@dcyfr/ai-web` is maintained by **DCYFR Labs** as part of the DCYFR starter template portfolio.
+
+- **DCYFR** is a registered trademark of DCYFR Labs.
+- Primary domain: [www.dcyfr.ai](https://www.dcyfr.ai)
+- Trademark guidance: [../TRADEMARK.md](../TRADEMARK.md)
+- Licensing details: [LICENSE](./LICENSE)
+
 ---
 
 ## ⚡ 30-Second Quick Start
@@ -43,12 +52,12 @@ npm run dev
 
 ## 🧭 Related Packages
 
-| Package | Purpose | Type |
-|---------|---------|------|
-| [@dcyfr/ai](../dcyfr-ai) | Core AI framework | npm package |
-| [@dcyfr/ai-react](../dcyfr-ai-react) | React SPA template | Template |
-| [@dcyfr/ai-api](../dcyfr-ai-api) | REST API template | Template |
-| [dcyfr-labs](../dcyfr-labs) | Production Next.js app | Application |
+| Package                              | Purpose                | Type        |
+| ------------------------------------ | ---------------------- | ----------- |
+| [@dcyfr/ai](../dcyfr-ai)             | Core AI framework      | npm package |
+| [@dcyfr/ai-react](../dcyfr-ai-react) | React SPA template     | Template    |
+| [@dcyfr/ai-api](../dcyfr-ai-api)     | REST API template      | Template    |
+| [dcyfr-labs](../dcyfr-labs)          | Production Next.js app | Application |
 
 ---
 
@@ -65,17 +74,17 @@ npm run dev
 
 ## Tech Stack
 
-| Category | Technology | Version |
-|----------|-----------|---------|
-| Framework | Next.js (App Router) | 15.x |
-| Language | TypeScript | 5.7+ |
-| Styling | Tailwind CSS | 3.4 |
-| UI Components | Shadcn/ui pattern | - |
-| Database | Drizzle ORM + SQLite | 0.38+ |
-| Auth | JWT (jsonwebtoken) | 9.x |
-| Validation | Zod | 3.24+ |
-| State | Zustand | 5.x |
-| Testing | Vitest + RTL | 2.1 |
+| Category      | Technology           | Version |
+| ------------- | -------------------- | ------- |
+| Framework     | Next.js (App Router) | 15.x    |
+| Language      | TypeScript           | 5.7+    |
+| Styling       | Tailwind CSS         | 3.4     |
+| UI Components | Shadcn/ui pattern    | -       |
+| Database      | Drizzle ORM + SQLite | 0.38+   |
+| Auth          | JWT (jsonwebtoken)   | 9.x     |
+| Validation    | Zod                  | 3.24+   |
+| State         | Zustand              | 5.x     |
+| Testing       | Vitest + RTL         | 2.1     |
 
 ## Quick Start
 
@@ -142,27 +151,27 @@ src/
 
 ## Pages
 
-| Route | Type | Description |
-|-------|------|-------------|
-| `/` | Server | Landing page with hero and features |
-| `/login` | Client | Login form with JWT auth |
-| `/register` | Client | Registration form |
-| `/blog` | Server | Published blog posts list |
-| `/blog/[slug]` | Server | Individual blog post |
-| `/dashboard` | Server | Protected user dashboard |
+| Route          | Type   | Description                         |
+| -------------- | ------ | ----------------------------------- |
+| `/`            | Server | Landing page with hero and features |
+| `/login`       | Client | Login form with JWT auth            |
+| `/register`    | Client | Registration form                   |
+| `/blog`        | Server | Published blog posts list           |
+| `/blog/[slug]` | Server | Individual blog post                |
+| `/dashboard`   | Server | Protected user dashboard            |
 
 ## API Routes
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/auth/register` | - | Create account + get JWT |
-| POST | `/api/auth/login` | - | Authenticate + get JWT |
-| GET | `/api/posts` | - | List published posts |
-| POST | `/api/posts` | Bearer | Create new post |
-| GET | `/api/posts/[id]` | - | Get post by ID |
-| PATCH | `/api/posts/[id]` | Bearer | Update own post |
-| DELETE | `/api/posts/[id]` | Bearer | Delete own post |
-| GET | `/api/health` | - | Health check |
+| Method | Endpoint             | Auth   | Description              |
+| ------ | -------------------- | ------ | ------------------------ |
+| POST   | `/api/auth/register` | -      | Create account + get JWT |
+| POST   | `/api/auth/login`    | -      | Authenticate + get JWT   |
+| GET    | `/api/posts`         | -      | List published posts     |
+| POST   | `/api/posts`         | Bearer | Create new post          |
+| GET    | `/api/posts/[id]`    | -      | Get post by ID           |
+| PATCH  | `/api/posts/[id]`    | Bearer | Update own post          |
+| DELETE | `/api/posts/[id]`    | Bearer | Delete own post          |
+| GET    | `/api/health`        | -      | Health check             |
 
 ## Authentication
 
@@ -217,32 +226,35 @@ The script automatically prefers `clang`/`clang++` when available, which avoids 
 
 ### Test Coverage
 
-| Suite | Tests | Description |
-|-------|-------|-------------|
-| lib/errors | 7 | Error class hierarchy |
-| lib/auth | 5 | Password hashing + JWT |
-| lib/utils | 9 | cn, slugify, formatDate, truncate |
-| lib/schemas | 14 | Zod validation schemas |
-| services/user | 9 | CRUD + duplicate detection |
-| services/post | 10 | CRUD + owner enforcement |
-| components/button | 6 | Variants, sizes, ref, disabled |
-| components/input | 5 | Rendering, error state, ref |
-| components/card | 2 | Composition pattern |
-| components/badge+spinner | 6 | Variants, sizes, accessibility |
+| Suite                    | Tests | Description                       |
+| ------------------------ | ----- | --------------------------------- |
+| lib/errors               | 7     | Error class hierarchy             |
+| lib/auth                 | 5     | Password hashing + JWT            |
+| lib/utils                | 9     | cn, slugify, formatDate, truncate |
+| lib/schemas              | 14    | Zod validation schemas            |
+| services/user            | 9     | CRUD + duplicate detection        |
+| services/post            | 10    | CRUD + owner enforcement          |
+| components/button        | 6     | Variants, sizes, ref, disabled    |
+| components/input         | 5     | Rendering, error state, ref       |
+| components/card          | 2     | Composition pattern               |
+| components/badge+spinner | 6     | Variants, sizes, accessibility    |
 
 ## Patterns
 
 ### Server vs Client Components
+
 - **Default to Server Components** (no `'use client'` directive) for better performance
 - **Client Components only when needed:** Forms, event handlers, browser APIs, React hooks
 - Middleware handles authentication for protected Server Components
 
 ### Database Access
+
 - **Service layer pattern** — `UserService`, `PostService` isolate DB logic
 - **Drizzle ORM** for type-safe queries with `better-sqlite3` (dev) or PostgreSQL (production)
 - **Migrations** managed with Drizzle Kit (`npm run db:generate`, `npm run db:migrate`)
 
 ### Zod Validation
+
 - All API inputs validated with Zod schemas in `src/lib/schemas.ts`
 - Type-safe with inferred types: `RegisterInput`, `CreatePostInput`, etc.
 - Validation errors return structured error messages for client display
@@ -257,6 +269,8 @@ Comprehensive guides available in `docs/` directory:
 - **[DEPLOYMENT.md](docs/DEPLOYMENT.md)** — Vercel, Railway, Docker, Kubernetes deployment
 
 ## Examples
+
+See [`examples/README.md`](examples/README.md) for a quick index, prerequisites, and run/type-check commands.
 
 Executable examples in `examples/` directory:
 
@@ -377,6 +391,7 @@ npm run test:ui          # Vitest UI
 ```
 Error: Database is locked
 ```
+
 **Solution:** SQLite doesn't support concurrent writes. Use PostgreSQL for production.
 
 ### JWT Verification Fails
@@ -384,6 +399,7 @@ Error: Database is locked
 ```
 Error: jwt malformed
 ```
+
 **Solution:** Ensure `JWT_SECRET` environment variable is set correctly.
 
 ### Module Not Found
@@ -391,6 +407,7 @@ Error: jwt malformed
 ```
 Error: Cannot find module '@/lib/auth'
 ```
+
 **Solution:** Check `tsconfig.json` paths configuration, run `npm run build` to regenerate types.
 
 ## Contributing

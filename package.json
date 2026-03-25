@@ -3,11 +3,14 @@
   "private": true,
   "version": "2.0.0",
   "description": "Production-ready full-stack Next.js web application template with App Router, Drizzle ORM, JWT auth, and Tailwind CSS",
+  "author": "DCYFR Labs",
+  "license": "MIT",
   "scripts": {
     "native:sqlite:ensure": "node scripts/ensure-native-sqlite.mjs",
+    "copy-brand-assets": "node scripts/copy-brand-assets.mjs",
     "predev": "npm run native:sqlite:ensure",
     "dev": "next dev",
-    "prebuild": "npm run native:sqlite:ensure",
+    "prebuild": "npm run native:sqlite:ensure && npm run copy-brand-assets",
     "build": "next build",
     "prestart": "npm run native:sqlite:ensure",
     "start": "next start",
@@ -22,6 +25,9 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "examples:compile": "tsc --noEmit",
+    "examples:check": "npm run examples:compile",
+    "examples:test": "npm run examples:check",
     "db:generate": "drizzle-kit generate",
     "predb:migrate": "npm run native:sqlite:ensure",
     "db:migrate": "tsx src/db/migrate.ts",
@@ -43,7 +49,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.6.0",
-    "zod": "^3.24.2",
+    "zod": "^4.3.6",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
@@ -54,7 +60,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/bcryptjs": "^3.0.0",
     "@types/better-sqlite3": "^7.6.12",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.13.1",
@@ -71,6 +76,7 @@
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
+    "@vitest/coverage-v8": "4.0.18",
     "vitest": "4.0.18"
   },
   "engines": {
@@ -83,6 +89,10 @@
     "type": "git",
     "url": "https://github.com/dcyfr/dcyfr-ai-web"
   },
+  "bugs": {
+    "url": "https://github.com/dcyfr/dcyfr-ai-web/issues"
+  },
+  "homepage": "https://github.com/dcyfr/dcyfr-ai-web#readme",
   "overrides": {
     "minimatch": ">=9.0.7"
   }
