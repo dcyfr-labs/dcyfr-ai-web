@@ -31,6 +31,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@dcyfr/design-system": "file:vendor/dcyfr-design-system",
+    "@dcyfr/utils": "file:vendor/dcyfr-utils",
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^11.8.1",
     "class-variance-authority": "^0.7.1",
