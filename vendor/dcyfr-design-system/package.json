@@ -1,0 +1,9 @@
+{
+  "name": "@dcyfr/design-system",
+  "version": "0.0.0-local",
+  "private": true,
+  "sideEffects": [
+    "*.css",
+    "css/*.css"
+  ]
+}
