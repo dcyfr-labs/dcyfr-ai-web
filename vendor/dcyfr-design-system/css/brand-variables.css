@@ -1,0 +1,8 @@
+/* Local fallback brand variables for standalone template builds */
+:root {
+  --brand-primary: #22d3ee;
+  --brand-primary-foreground: #082f49;
+  --brand-accent: #a78bfa;
+  --brand-surface: #0b1220;
+  --brand-surface-foreground: #e5e7eb;
+}
