@@ -1,5 +1,13 @@
 # @dcyfr/ai-web
 
+<!-- README-META
+  tlp_clearance: GREEN
+  status: deprecated
+  name: dcyfr-ai-web
+  description: Production-ready full-stack Next.js web application template with App Router, Drizzle ORM, JWT auth, and Tailwind CSS
+  last_validated: 2026-03-29
+-->
+
 > **⚠️ PACKAGE DEPRECATED ON NPM (February 27, 2026)**  
 > This package was published to npm but has been **deprecated**. It is a starter template, not a library.  
 > **Use this repo as:**
