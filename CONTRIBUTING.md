@@ -43,7 +43,18 @@ All changes must maintain 100% test pass rate.
 
 ## Pull Request Process
 
-1. Create feature branch from `main`
+**Branch Naming Convention:**
+```bash
+# Format: <type>/DCYFR-<NUMBER>-<description>
+git checkout -b feat/DCYFR-123-add-new-feature
+git checkout -b fix/DCYFR-456-resolve-bug
+```
+
+**Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
+
+**PR Workflow:**
+1. Create feature branch from `main` following naming convention above
 2. Implement changes with tests
 3. Run `npm run typecheck && npm run test:run`
-4. Submit PR with clear description
+4. Submit PR with title: `[DCYFR-<NUMBER>] Brief description`
+5. Include `DCYFR-<NUMBER>` reference in commit messages
