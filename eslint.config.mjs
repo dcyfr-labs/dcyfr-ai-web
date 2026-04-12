@@ -24,7 +24,7 @@ const localRuleConfig = noNonBrandFonts
 
 export default defineConfig([
   ...nextVitals,
-  globalIgnores(['.next/**', 'dist/**', 'coverage/**', 'node_modules/**']),
+  globalIgnores(['.next/**', 'dist/**', 'coverage/**', 'node_modules/**', 'drizzle.config.ts']),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     ...localRuleConfig,
