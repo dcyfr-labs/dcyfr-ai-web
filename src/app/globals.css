@@ -1,7 +1,21 @@
 @import "tailwindcss";
 
+/*
+ * Pilot Phase 1 scaffold — semantic CSS variable set per
+ * openspec/changes/dcyfr-skeleton-sites-scaffolding/spec.md §1.
+ *
+ * This block extends shadcn defaults with DCYFR-specific semantic tokens
+ * (--secure, --success, --warning, --ease-brand). The .theme-dcyfr-ai-web
+ * identity override block below is STAGED — not yet applied to <html>.
+ *
+ * Full wiring (activate theme class, migrate tailwind.config.ts to v4 import
+ * style, drop vendored @dcyfr/design-system tokens, add next-themes provider)
+ * lands as a follow-up under skeleton-sites-scaffolding Phase 2/3.
+ */
+
 @layer base {
   :root {
+    /* Core shadcn semantics */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -22,6 +36,19 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+
+    /* DCYFR-specific semantics */
+    --secure: 217 91% 60%;
+    --secure-foreground: 210 40% 98%;
+    --success: 142 71% 45%;
+    --success-foreground: 142 30% 5%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 43 30% 10%;
+
+    /* Motion */
+    --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Typography */
     --font-sans: 'Geist Sans', var(--font-geist-sans, ui-sans-serif), system-ui, sans-serif;
     --font-mono: 'Geist Mono', var(--font-geist-mono, ui-monospace), monospace;
   }
@@ -46,6 +73,48 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    /* DCYFR semantics (dark) */
+    --secure: 217 91% 65%;
+    --secure-foreground: 217 30% 10%;
+    --success: 142 71% 50%;
+    --success-foreground: 142 30% 5%;
+    --warning: 43 96% 60%;
+    --warning-foreground: 43 30% 10%;
+  }
+
+  /*
+   * Identity layer for dcyfr-ai-web — futuristic, neon-teal + magenta, dark-default.
+   * Staged: apply via <html className="theme-dcyfr-ai-web"> in layout.tsx
+   * once Phase 2/3 wiring is approved.
+   * Source of truth: docs/dcyfr-workspace/sites/dcyfr-ai-web.md
+   */
+  .theme-dcyfr-ai-web {
+    --primary: 172 90% 50%;           /* neon teal */
+    --primary-foreground: 172 30% 5%;
+    --accent: 316 90% 60%;            /* magenta */
+    --accent-foreground: 316 30% 98%;
+    --radius: 0.5rem;
+    --ring: 172 90% 50%;
+    --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, monospace;
+  }
+
+  .theme-dcyfr-ai-web.dark,
+  .dark .theme-dcyfr-ai-web {
+    /* Near-black canvas with subtle teal bias — neon reads best here */
+    --background: 200 20% 6%;
+    --foreground: 172 20% 92%;
+    --card: 200 18% 10%;
+    --card-foreground: 172 20% 92%;
+    --popover: 200 18% 10%;
+    --popover-foreground: 172 20% 92%;
+    --muted: 200 12% 14%;
+    --muted-foreground: 200 8% 60%;
+    --border: 172 25% 25%;
+    --input: 172 25% 25%;
+    --secondary: 200 12% 18%;
+    --secondary-foreground: 172 20% 92%;
   }
 }
 
@@ -57,5 +126,15 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
