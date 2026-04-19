@@ -1,5 +1,12 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui';
+import { DcyfrButton } from '@/components/ui/dcyfr-button';
+import { DcyfrBadge } from '@/components/ui/dcyfr-badge';
+import {
+  DcyfrCard,
+  DcyfrCardContent,
+  DcyfrCardHeader,
+  DcyfrCardTitle,
+} from '@/components/ui/dcyfr-card';
 
 export default function HomePage() {
   return (
@@ -7,6 +14,13 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center space-y-6 pb-8 pt-16 md:pb-12 md:pt-24 lg:py-32">
         <div className="flex max-w-[64rem] flex-col items-center gap-4 text-center">
+          <DcyfrBadge variant="secure" size="md" className="mb-2">
+            <span
+              className="size-1.5 rounded-full bg-accent animate-pulse"
+              aria-hidden="true"
+            />
+            Next.js 16 · React 19 · Drizzle · JWT
+          </DcyfrBadge>
           <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             Build full-stack apps{' '}
             <span className="text-primary">faster</span>
@@ -16,14 +30,12 @@ export default function HomePage() {
             Start building immediately.
           </p>
           <div className="flex gap-4">
-            <Link href="/dashboard">
-              <Button size="lg">Get Started</Button>
-            </Link>
-            <Link href="/blog">
-              <Button variant="outline" size="lg">
-                Read Blog
-              </Button>
-            </Link>
+            <DcyfrButton asChild variant="brand" size="lg">
+              <Link href="/dashboard">Get Started</Link>
+            </DcyfrButton>
+            <DcyfrButton asChild variant="ghostly" size="lg">
+              <Link href="/blog">Read Blog</Link>
+            </DcyfrButton>
           </div>
         </div>
       </section>
@@ -32,7 +44,7 @@ export default function HomePage() {
       <section className="grid gap-6 pb-16 md:grid-cols-2 lg:grid-cols-3">
         <FeatureCard
           title="App Router"
-          description="Built on Next.js 14 App Router with Server Components and streaming."
+          description="Built on Next.js 16 App Router with Server Components and streaming."
         />
         <FeatureCard
           title="Authentication"
@@ -44,7 +56,7 @@ export default function HomePage() {
         />
         <FeatureCard
           title="UI Components"
-          description="Shadcn/ui-compatible components with Tailwind CSS and dark mode support."
+          description="@dcyfr-labs brand primitives + shadcn/ui + Tailwind v4 + next-themes."
         />
         <FeatureCard
           title="Type Safety"
@@ -59,11 +71,21 @@ export default function HomePage() {
   );
 }
 
-function FeatureCard({ title, description }: { title: string; description: string }) {
+function FeatureCard({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
   return (
-    <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-      <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-      <p className="text-sm text-muted-foreground">{description}</p>
-    </div>
+    <DcyfrCard variant="default" padding="md" className="transition-all hover:shadow-md">
+      <DcyfrCardHeader className="pb-2">
+        <DcyfrCardTitle className="text-lg">{title}</DcyfrCardTitle>
+      </DcyfrCardHeader>
+      <DcyfrCardContent>
+        <p className="text-sm text-muted-foreground">{description}</p>
+      </DcyfrCardContent>
+    </DcyfrCard>
   );
 }
