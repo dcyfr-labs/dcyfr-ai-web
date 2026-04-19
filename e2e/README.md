@@ -9,18 +9,19 @@ npx playwright install chromium
 
 ## First-time baseline capture
 
-dcyfr-ai-web doesn't have a public production URL yet — capture against a
-local dev server or a Vercel preview:
+dcyfr-ai-web has a public Vercel preview at **https://dcyfr-ai-web.vercel.app/** — capture against it for production-parity baselines:
 
 ```bash
-# Local dev (requires npm run dev running in another terminal)
-BASE_URL=http://localhost:3000 npm run test:snapshots:update
+# Against the public preview (preferred for baseline-committing)
+BASE_URL=https://dcyfr-ai-web.vercel.app npm run test:snapshots:update
 
-# Or against a Vercel preview
-BASE_URL=https://dcyfr-ai-web-<hash>.vercel.app npm run test:snapshots:update
+# Or local dev (fast iteration, macOS-rendered; CI uses linux)
+BASE_URL=http://localhost:3000 npm run test:snapshots:update
 ```
 
-Commit the resulting PNGs.
+Commit the resulting PNGs. The `snapshotPathTemplate` override in
+`playwright.config.ts` drops the `{platform}` suffix so darwin-captured
+baselines match CI's linux-rendered diff within the 5% tolerance.
 
 ## Regular runs
 
