@@ -7,13 +7,17 @@ import {
   DcyfrCardHeader,
   DcyfrCardTitle,
 } from '@/components/ui/dcyfr-card';
+import { AgentNetworkHero } from '@/components/hero/agent-network-hero';
 
 export default function HomePage() {
   return (
     <div className="container px-4">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center space-y-6 pb-8 pt-16 md:pb-12 md:pt-24 lg:py-32">
-        <div className="flex max-w-[64rem] flex-col items-center gap-4 text-center">
+      {/* Hero Section — the 3D agent-network renders as a background layer.
+          Above-fold on desktop (md+), below-fold on mobile (viewport height
+          cap on the wrapper keeps it <= 70vh so the CTAs stay in reach). */}
+      <section className="relative flex flex-col items-center justify-center space-y-6 pb-8 pt-16 md:pb-12 md:pt-24 lg:py-32">
+        <AgentNetworkHero className="pointer-events-none absolute inset-x-0 top-0 -z-10 hidden h-[70vh] overflow-hidden opacity-60 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] md:block" />
+        <div className="relative flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <DcyfrBadge variant="secure" size="md" className="mb-2">
             <span
               className="size-1.5 rounded-full bg-accent animate-pulse"
@@ -38,6 +42,13 @@ export default function HomePage() {
             </DcyfrButton>
           </div>
         </div>
+      </section>
+
+      {/* Mobile below-fold agent-network mount — desktop gets it above-fold
+          as the hero bg (see section above). Cap height so the features grid
+          stays in view. */}
+      <section className="relative -mx-4 mb-8 aspect-square overflow-hidden md:hidden">
+        <AgentNetworkHero className="pointer-events-none absolute inset-0 size-full overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_85%)]" />
       </section>
 
       {/* Features Section */}
