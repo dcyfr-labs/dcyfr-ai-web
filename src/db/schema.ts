@@ -1,29 +1,32 @@
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { pgTable, text, serial, integer, boolean, timestamp, pgEnum } from 'drizzle-orm/pg-core';
+
+// ─── Enums ──────────────────────────────────────────────
+export const userRole = pgEnum('user_role', ['user', 'admin']);
 
 // ─── Users Table ────────────────────────────────────────
-export const users = sqliteTable('users', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
   email: text('email').notNull().unique(),
   name: text('name').notNull(),
   passwordHash: text('password_hash').notNull(),
-  role: text('role', { enum: ['user', 'admin'] }).notNull().default('user'),
-  createdAt: text('created_at').notNull().default(new Date().toISOString()),
-  updatedAt: text('updated_at').notNull().default(new Date().toISOString()),
+  role: userRole('role').notNull().default('user'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });
 
 // ─── Posts Table ────────────────────────────────────────
-export const posts = sqliteTable('posts', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+export const posts = pgTable('posts', {
+  id: serial('id').primaryKey(),
   title: text('title').notNull(),
   slug: text('slug').notNull().unique(),
   content: text('content').notNull(),
   excerpt: text('excerpt'),
-  published: integer('published', { mode: 'boolean' }).notNull().default(false),
+  published: boolean('published').notNull().default(false),
   authorId: integer('author_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  createdAt: text('created_at').notNull().default(new Date().toISOString()),
-  updatedAt: text('updated_at').notNull().default(new Date().toISOString()),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });
 
 // ─── Type Exports ───────────────────────────────────────

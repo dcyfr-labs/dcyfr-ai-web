@@ -4,13 +4,14 @@ import { users, posts } from './schema';
 import { hashSync } from 'bcryptjs';
 
 async function seed(): Promise<void> {
-  const { orm, sqlite } = createDb();
-  migrate(sqlite);
+  console.log('🌱 Running migrations...');
+  await migrate();
 
+  const { orm } = createDb();
   console.log('🌱 Seeding database...');
 
   // Create users
-  const [admin] = orm
+  const [admin] = await orm
     .insert(users)
     .values({
       email: 'admin@example.com',
@@ -18,10 +19,10 @@ async function seed(): Promise<void> {
       passwordHash: hashSync('password123', 10),
       role: 'admin',
     })
-    .returning()
-    .all();
+    .onConflictDoNothing()
+    .returning();
 
-  const [user] = orm
+  const [user] = await orm
     .insert(users)
     .values({
       email: 'user@example.com',
@@ -29,11 +30,16 @@ async function seed(): Promise<void> {
       passwordHash: hashSync('password123', 10),
       role: 'user',
     })
-    .returning()
-    .all();
+    .onConflictDoNothing()
+    .returning();
+
+  if (!admin || !user) {
+    console.log('⚠️  Seed users already exist — skipping post seed.');
+    return;
+  }
 
   // Create posts
-  orm
+  await orm
     .insert(posts)
     .values([
       {
@@ -62,11 +68,14 @@ async function seed(): Promise<void> {
         authorId: user.id,
       },
     ])
-    .run();
+    .onConflictDoNothing();
 
   console.log('✅ Seed complete');
-  console.log(`   Created ${2} users (admin + user)`);
-  console.log(`   Created ${3} posts (2 published, 1 draft)`);
+  console.log(`   Created 2 users (admin + user)`);
+  console.log(`   Created 3 posts (2 published, 1 draft)`);
 }
 
-seed().catch(console.error);
+seed().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

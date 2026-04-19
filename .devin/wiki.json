@@ -1,0 +1,8 @@
+{
+  "repo_notes": [
+    {
+      "content": "Web frontend for DCYFR AI services. Document the React components, state management, API integration, and user interface patterns for interacting with AI agents and workflows.",
+      "author": "DCYFR Engineering"
+    }
+  ]
+}
