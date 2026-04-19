@@ -47,8 +47,15 @@ export async function migrate(url?: string): Promise<void> {
   }
 }
 
-// CLI entry point
-if (process.argv[1] === import.meta.filename) {
+// CLI entry point — wrapped in a function to avoid top-level await (tsx CJS).
+async function main(): Promise<void> {
   await migrate();
   console.log('✅ Migrations complete');
+}
+
+if (process.argv[1] === import.meta.filename) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
 }

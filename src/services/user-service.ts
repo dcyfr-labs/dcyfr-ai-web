@@ -14,33 +14,33 @@ export class UserService {
   constructor(private database: AppDb = db) {}
 
   async findAll(): Promise<SafeUser[]> {
-    const allUsers = this.database.select().from(users).all();
+    const allUsers = await this.database.select().from(users);
     return allUsers.map(omitPassword);
   }
 
   async findById(id: number): Promise<SafeUser> {
-    const user = this.database.select().from(users).where(eq(users.id, id)).get();
+    const [user] = await this.database.select().from(users).where(eq(users.id, id));
     if (!user) throw new NotFoundError('User', id);
     return omitPassword(user);
   }
 
   async findByEmail(email: string): Promise<User | undefined> {
-    return this.database.select().from(users).where(eq(users.email, email)).get();
+    const [user] = await this.database.select().from(users).where(eq(users.email, email));
+    return user;
   }
 
   async create(data: { email: string; name: string; password: string }): Promise<SafeUser> {
     const existing = await this.findByEmail(data.email);
     if (existing) throw new ConflictError('Email already registered');
 
-    const [user] = this.database
+    const [user] = await this.database
       .insert(users)
       .values({
         email: data.email,
         name: data.name,
         passwordHash: hashPassword(data.password),
       })
-      .returning()
-      .all();
+      .returning();
 
     return omitPassword(user);
   }
@@ -48,18 +48,17 @@ export class UserService {
   async update(id: number, data: Partial<Pick<User, 'name' | 'email'>>): Promise<SafeUser> {
     await this.findById(id); // throws if not found
 
-    const [updated] = this.database
+    const [updated] = await this.database
       .update(users)
-      .set({ ...data, updatedAt: new Date().toISOString() })
+      .set({ ...data, updatedAt: new Date() })
       .where(eq(users.id, id))
-      .returning()
-      .all();
+      .returning();
 
     return omitPassword(updated);
   }
 
   async delete(id: number): Promise<void> {
     await this.findById(id); // throws if not found
-    this.database.delete(users).where(eq(users.id, id)).run();
+    await this.database.delete(users).where(eq(users.id, id));
   }
 }

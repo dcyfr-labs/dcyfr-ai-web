@@ -7,21 +7,21 @@ export class PostService {
   constructor(private database: AppDb = db) {}
 
   async findPublished(): Promise<Post[]> {
-    return this.database.select().from(posts).where(eq(posts.published, true)).all();
+    return this.database.select().from(posts).where(eq(posts.published, true));
   }
 
   async findByAuthor(authorId: number): Promise<Post[]> {
-    return this.database.select().from(posts).where(eq(posts.authorId, authorId)).all();
+    return this.database.select().from(posts).where(eq(posts.authorId, authorId));
   }
 
   async findById(id: number): Promise<Post> {
-    const post = this.database.select().from(posts).where(eq(posts.id, id)).get();
+    const [post] = await this.database.select().from(posts).where(eq(posts.id, id));
     if (!post) throw new NotFoundError('Post', id);
     return post;
   }
 
   async findBySlug(slug: string): Promise<Post> {
-    const post = this.database.select().from(posts).where(eq(posts.slug, slug)).get();
+    const [post] = await this.database.select().from(posts).where(eq(posts.slug, slug));
     if (!post) throw new NotFoundError('Post');
     return post;
   }
@@ -35,7 +35,7 @@ export class PostService {
   }): Promise<Post> {
     const slug = slugify(data.title);
 
-    const [post] = this.database
+    const [post] = await this.database
       .insert(posts)
       .values({
         title: data.title,
@@ -45,8 +45,7 @@ export class PostService {
         published: data.published ?? false,
         authorId: data.authorId,
       })
-      .returning()
-      .all();
+      .returning();
 
     return post;
   }
@@ -61,18 +60,17 @@ export class PostService {
 
     const updateData: Record<string, unknown> = {
       ...data,
-      updatedAt: new Date().toISOString(),
+      updatedAt: new Date(),
     };
     if (data.title) {
       updateData.slug = slugify(data.title);
     }
 
-    const [updated] = this.database
+    const [updated] = await this.database
       .update(posts)
       .set(updateData)
       .where(eq(posts.id, id))
-      .returning()
-      .all();
+      .returning();
 
     return updated;
   }
@@ -80,6 +78,6 @@ export class PostService {
   async delete(id: number, authorId: number): Promise<void> {
     const post = await this.findById(id);
     if (post.authorId !== authorId) throw new ForbiddenError('Not the post owner');
-    this.database.delete(posts).where(eq(posts.id, id)).run();
+    await this.database.delete(posts).where(eq(posts.id, id));
   }
 }
