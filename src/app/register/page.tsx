@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button, Input, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui';
+import { TemplateModeBanner } from '@/components/template-mode-banner';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -43,8 +44,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center px-4">
-      <Card className="w-full max-w-md">
+    <div className="container flex min-h-screen w-screen flex-col items-center justify-center px-4 py-12">
+      <div className="w-full max-w-md">
+        <TemplateModeBanner />
+        <Card className="w-full">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Create an account</CardTitle>
           <CardDescription>Enter your details to create your account</CardDescription>
@@ -109,7 +112,8 @@ export default function RegisterPage() {
             </p>
           </CardFooter>
         </form>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 }
