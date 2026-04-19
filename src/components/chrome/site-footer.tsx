@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
+import type { Route } from 'next';
 
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
@@ -75,7 +76,7 @@ export function SiteFooter({
                 {social.map((s) => (
                   <li key={s.href}>
                     <Link
-                      href={s.href}
+                      href={s.href as Route}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={s.label}
@@ -100,7 +101,7 @@ export function SiteFooter({
                 {col.links.map((link) => (
                   <li key={link.href}>
                     <Link
-                      href={link.href}
+                      href={link.href as Route}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
                       className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded"
@@ -123,7 +124,7 @@ export function SiteFooter({
               {legal.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={link.href as Route}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
                     className="transition-colors hover:text-foreground"

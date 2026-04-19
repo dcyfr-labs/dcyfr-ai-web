@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import type { Route } from 'next';
 import { MenuIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -85,7 +86,7 @@ export function SiteNav({
             {links.map((link) => (
               <li key={link.href}>
                 <Link
-                  href={link.href}
+                  href={link.href as Route}
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   onClick={link.onClick}
@@ -107,7 +108,7 @@ export function SiteNav({
               size="sm"
               className="hidden md:inline-flex"
             >
-              <Link href={cta.href}>{cta.label}</Link>
+              <Link href={cta.href as Route}>{cta.label}</Link>
             </Button>
           )}
           <Sheet>
@@ -129,7 +130,7 @@ export function SiteNav({
                   <li key={link.href}>
                     <SheetClose asChild>
                       <Link
-                        href={link.href}
+                        href={link.href as Route}
                         target={link.external ? '_blank' : undefined}
                         rel={link.external ? 'noopener noreferrer' : undefined}
                         className="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
@@ -143,7 +144,7 @@ export function SiteNav({
                   <li className="mt-2">
                     <SheetClose asChild>
                       <Button asChild variant={cta.variant ?? 'default'} className="w-full">
-                        <Link href={cta.href}>{cta.label}</Link>
+                        <Link href={cta.href as Route}>{cta.label}</Link>
                       </Button>
                     </SheetClose>
                   </li>
