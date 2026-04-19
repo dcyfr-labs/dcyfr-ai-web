@@ -6,12 +6,27 @@
  *
  * This block extends shadcn defaults with DCYFR-specific semantic tokens
  * (--secure, --success, --warning, --ease-brand). The .theme-dcyfr-ai-web
- * identity override block below is STAGED — not yet applied to <html>.
+ * identity is wired via <html className="theme-dcyfr-ai-web"> in layout.tsx.
  *
- * Full wiring (activate theme class, migrate tailwind.config.ts to v4 import
- * style, drop vendored @dcyfr/design-system tokens, add next-themes provider)
- * lands as a follow-up under skeleton-sites-scaffolding Phase 2/3.
+ * Tailwind v4 note: the @theme inline block below promotes the CSS vars to
+ * Tailwind utilities (bg-secure, text-secure-foreground, etc.) which is
+ * otherwise not automatic in v4. Without this, components using the secure
+ * variant (DcyfrBadge, DcyfrButton) would render unstyled.
+ * See openspec/changes/dcyfr-sites-design-parity Phase 1.1-1.3.
  */
+
+@theme inline {
+  --color-secure: hsl(var(--secure));
+  --color-secure-foreground: hsl(var(--secure-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --ease-brand: var(--ease-brand);
+}
 
 @layer base {
   :root {
