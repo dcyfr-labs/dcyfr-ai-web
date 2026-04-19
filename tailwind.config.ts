@@ -1,10 +1,6 @@
 import type { Config } from 'tailwindcss';
-import designSystemPreset from '@dcyfr/design-system/tailwind';
 
-// Cast preset to Config: the design system exports UserConfig which is
-// assignable at runtime but TypeScript's structural check requires the cast.
 const config: Config = {
-  presets: [designSystemPreset as unknown as Config],
   darkMode: 'class',
   content: [
     './src/app/**/*.{ts,tsx}',

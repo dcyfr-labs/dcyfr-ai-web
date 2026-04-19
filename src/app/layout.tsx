@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout';
 import { Footer } from '@/components/layout';
-import '@dcyfr/design-system/css/fonts.css';
-import '@dcyfr/design-system/css/brand-variables.css';
 import './globals.css';
 
 export const metadata: Metadata = {

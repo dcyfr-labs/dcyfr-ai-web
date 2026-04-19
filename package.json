@@ -7,10 +7,9 @@
   "license": "MIT",
   "scripts": {
     "native:sqlite:ensure": "node scripts/ensure-native-sqlite.mjs",
-    "copy-brand-assets": "node scripts/copy-brand-assets.mjs",
     "predev": "npm run native:sqlite:ensure",
     "dev": "next dev",
-    "prebuild": "npm run native:sqlite:ensure && npm run copy-brand-assets",
+    "prebuild": "npm run native:sqlite:ensure",
     "build": "next build",
     "prestart": "npm run native:sqlite:ensure",
     "start": "next start",
@@ -37,7 +36,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@dcyfr/design-system": "file:vendor/dcyfr-design-system",
     "@dcyfr/utils": "file:vendor/dcyfr-utils",
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^12.9.0",
