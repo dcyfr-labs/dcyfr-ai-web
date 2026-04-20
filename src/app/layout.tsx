@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ThemeProvider } from '@/components/theme-provider';
 import { PageShell, SiteNav, SiteFooter } from '@/components/chrome';
 import { Button } from '@/components/ui';
@@ -82,6 +84,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </PageShell>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
