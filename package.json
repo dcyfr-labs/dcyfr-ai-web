@@ -69,7 +69,7 @@
     "@types/react-dom": "^19.0.0",
     "@types/three": "^0.184.0",
     "@vitejs/plugin-react": "^6.0.1",
-    "@vitest/coverage-v8": "4.1.4",
+    "@vitest/coverage-v8": "4.1.5",
     "autoprefixer": "^10.5.0",
     "drizzle-kit": "^1.0.0-beta.22",
     "eslint": "^10.2.1",
