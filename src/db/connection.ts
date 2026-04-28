@@ -44,6 +44,31 @@ export function createDb(url?: string): DbInstance {
   return { orm, client };
 }
 
-const defaultInstance = createDb();
-export const db: AppDb = defaultInstance.orm;
-export const neonClient: NeonQueryFunction<false, false> = defaultInstance.client;
+// Lazy default instance: defer DB connection until first access so that
+// importing this module does not require POSTGRES_URL at load time. Tests
+// (which mock or skip DB-dependent service code) and tools (typecheck,
+// coverage, lint) can import the file without a live Neon URL; only actual
+// runtime DB use will throw the resolveUrl() error if env is missing.
+let _instance: DbInstance | null = null;
+function getInstance(): DbInstance {
+  if (!_instance) _instance = createDb();
+  return _instance;
+}
+
+export const db: AppDb = new Proxy({} as AppDb, {
+  get(_t, prop, receiver) {
+    return Reflect.get(getInstance().orm, prop, receiver);
+  },
+});
+
+export const neonClient: NeonQueryFunction<false, false> = new Proxy(
+  (() => {}) as unknown as NeonQueryFunction<false, false>,
+  {
+    apply(_t, thisArg, args) {
+      return Reflect.apply(getInstance().client, thisArg, args);
+    },
+    get(_t, prop, receiver) {
+      return Reflect.get(getInstance().client, prop, receiver);
+    },
+  },
+);
