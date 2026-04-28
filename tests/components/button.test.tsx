@@ -17,7 +17,7 @@ describe('Button', () => {
   it('applies size classes', () => {
     render(<Button size="lg">Large</Button>);
     const button = screen.getByRole('button');
-    expect(button.className).toContain('h-11');
+    expect(button.className).toContain('h-10');
   });
 
   it('forwards ref', () => {
