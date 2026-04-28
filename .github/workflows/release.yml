@@ -22,12 +22,12 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
@@ -50,9 +50,6 @@ jobs:
         run: |
           npm install --legacy-peer-deps
           npm install -D @changesets/cli @changesets/changelog-github --legacy-peer-deps
-
-      - name: Ensure native SQLite binding
-        run: npm run native:sqlite:ensure
 
       - name: Upgrade npm for Trusted Publishing
         run: npm install -g npm@latest
