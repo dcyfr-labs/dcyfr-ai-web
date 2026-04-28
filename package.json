@@ -26,7 +26,8 @@
     "db:migrate": "tsx src/db/migrate.ts",
     "db:seed": "tsx src/db/seed.ts",
     "db:studio": "drizzle-kit studio",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "release": "changeset publish"
   },
   "dependencies": {
     "@dcyfr/utils": "file:vendor/dcyfr-utils",
