@@ -58,7 +58,7 @@
     "@vercel/toolbar": "^0.2.6",
     "@changesets/cli": "^2.31.0",
     "@playwright/test": "^1.60.0",
-    "@tailwindcss/postcss": "^4.2.4",
+    "@tailwindcss/postcss": "^4.3.0",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
