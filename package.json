@@ -57,7 +57,7 @@
     "@changesets/changelog-github": "^0.7.0",
     "@vercel/toolbar": "^0.2.5",
     "@changesets/cli": "^2.31.0",
-    "@playwright/test": "^1.58.2",
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4.2.4",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/dom": "^10.4.0",
