@@ -42,3 +42,6 @@ playwright-report/
 *.log
 *.tsbuildinfo
 next-env.d.ts
+
+# Vercel (intentionally not linked — this is a self-contained template)
+.vercel/
