@@ -1,4 +1,9 @@
 version: 2
+# This repo is DEPRECATED (npm package deprecated 2026-02-27); it is kept only
+# as a GitHub starter template. Routine version-bump PRs add maintenance noise
+# with little value, so both ecosystems are scoped to security-only updates:
+# `open-pull-requests-limit: 0` disables routine version-update PRs while
+# Dependabot security updates (which ignore this limit) keep flowing.
 updates:
   - package-ecosystem: "npm"
     directory: "/"
@@ -7,7 +12,7 @@ updates:
       day: "monday"
       time: "04:00"
       timezone: "UTC"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 0
     labels:
       - "dependencies"
       - "automated"
@@ -22,7 +27,7 @@ updates:
       day: "monday"
       time: "04:00"
       timezone: "UTC"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 0
     labels:
       - "dependencies"
       - "automated"
