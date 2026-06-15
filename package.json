@@ -74,7 +74,7 @@
     "autoprefixer": "^10.5.0",
     "drizzle-kit": "^1.0.0-rc.4-273829f",
     "eslint": "^9.39.4",
-    "eslint-config-next": "^16.2.7",
+    "eslint-config-next": "^16.2.9",
     "eslint-plugin-react": "^7.37.5",
     "jsdom": "^29.1.1",
     "postcss": "^8.5.10",
