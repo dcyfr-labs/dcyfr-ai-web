@@ -5,29 +5,30 @@
   status: deprecated
   name: dcyfr-ai-web
   description: Production-ready full-stack Next.js web application template with App Router, Drizzle ORM, JWT auth, and Tailwind CSS
-  last_validated: 2026-04-10
+  last_validated: 2026-07-11
 -->
 
 > **⚠️ PACKAGE DEPRECATED ON NPM (February 27, 2026)**  
-> This package was published to npm but has been **deprecated**. It is a starter template, not a library.  
+> This package was published to npm but has been **deprecated**. It is a starter template, not a library — it survives only as a GitHub starter template.  
 > **Use this repo as:**
 >
 > - 📋 GitHub Template: Click "Use this template" above
-> - 📦 Direct clone: `git clone https://github.com/dcyfr/dcyfr-ai-web`
-> - 🚀 Degit: `npx degit dcyfr/dcyfr-ai-web my-app`
+> - 📦 Direct clone: `git clone https://github.com/dcyfr-labs/dcyfr-ai-web`
+> - 🚀 Degit: `npx degit dcyfr-labs/dcyfr-ai-web my-app`
 >
 > This package is now marked `"private": true` to prevent future publication.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/dcyfr-labs/dcyfr-ai-web)
 
+[![CI](https://github.com/dcyfr-labs/dcyfr-ai-web/actions/workflows/ci.yml/badge.svg)](https://github.com/dcyfr-labs/dcyfr-ai-web/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-16+-black?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Tailwind](https://img.shields.io/badge/Tailwind-CSS%204-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Drizzle](https://img.shields.io/badge/Drizzle-ORM-C5F74F?style=flat-square&logo=drizzle&logoColor=black)](https://orm.drizzle.team/)
-[![Template](https://img.shields.io/badge/Type-Template-blue?style=flat-square&logo=github)](https://github.com/dcyfr/dcyfr-ai-web)
+[![Template](https://img.shields.io/badge/Type-Template-blue?style=flat-square&logo=github)](https://github.com/dcyfr-labs/dcyfr-ai-web)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
-**Production-ready full-stack Next.js web application template** with App Router, Drizzle ORM, JWT authentication, and Tailwind CSS.
+**Full-stack Next.js web application template** with App Router, Drizzle ORM on Neon Postgres, JWT authentication, and Tailwind CSS.
 
 Perfect for building modern web applications with type-safe APIs, server-side rendering, and production-grade architecture patterns.
 
@@ -37,20 +38,29 @@ Perfect for building modern web applications with type-safe APIs, server-side re
 
 - **DCYFR** is a registered trademark of DCYFR Labs.
 - Primary domain: [www.dcyfr.ai](https://www.dcyfr.ai)
-- Trademark guidance: [../TRADEMARK.md](../TRADEMARK.md)
 - Licensing details: [LICENSE](./LICENSE)
 
 ---
 
-## ⚡ 30-Second Quick Start
+## ⚡ Quick Start
+
+The template runs on **Neon Postgres** (Postgres over HTTP) — you need a `POSTGRES_URL` before the dev server can serve database-backed routes.
 
 ```bash
 # Clone template
-npx degit dcyfr/dcyfr-ai-web my-web-app
+npx degit dcyfr-labs/dcyfr-ai-web my-web-app
 cd my-web-app
 
-# Install and start
+# Install
 npm install
+
+# Configure database (pick one):
+#   a) Vercel project with the Neon integration:
+vercel env pull .env.local
+#   b) Any Postgres connection string:
+cp .env.example .env.local   # then set POSTGRES_URL
+
+# Migrate + seed, then start
 npm run db:migrate && npm run db:seed
 npm run dev
 # ✅ Full-stack app at http://localhost:3000
@@ -60,67 +70,58 @@ npm run dev
 
 ## 🧭 Related Packages
 
-| Package                              | Purpose                | Type        |
-| ------------------------------------ | ---------------------- | ----------- |
-| [@dcyfr/ai](../dcyfr-ai)             | Core AI framework      | npm package |
-| [@dcyfr/ai-react](../dcyfr-ai-react) | React SPA template     | Template    |
-| [@dcyfr/ai-api](../dcyfr-ai-api)     | REST API template      | Template    |
-| [dcyfr-labs](../dcyfr-labs)          | Production Next.js app | Application |
+| Package                                                          | Purpose                | Type        |
+| ---------------------------------------------------------------- | ---------------------- | ----------- |
+| [@dcyfr/ai](https://github.com/dcyfr-labs/dcyfr-ai)               | Core AI framework      | npm package |
+| [@dcyfr/ai-react](https://github.com/dcyfr-labs/dcyfr-ai-react)   | React SPA template     | Template    |
+| [@dcyfr/ai-api](https://github.com/dcyfr-labs/dcyfr-ai-api)       | REST API template      | Template    |
+| [dcyfr-labs](https://github.com/dcyfr-labs/dcyfr-labs)            | Production Next.js app | Application |
 
 ---
 
 ## Features
 
-✅ **Modern Stack** — Next.js 15 App Router with TypeScript 5.7+  
-✅ **Database** — Drizzle ORM with SQLite (dev) / PostgreSQL (production)  
-✅ **Authentication** — JWT-based auth with httpOnly cookies  
+✅ **Modern Stack** — Next.js 16 App Router with TypeScript 6  
+✅ **Database** — Drizzle ORM on Neon Postgres (serverless HTTP driver)  
+✅ **Authentication** — JWT auth with cookie-based route protection  
 ✅ **Validation** — Zod schemas for all API inputs  
-✅ **UI Components** — Shadcn/ui-compatible component library  
-✅ **Testing** — 73 tests with Vitest + React Testing Library  
+✅ **UI Components** — Shadcn/ui-compatible component library + DCYFR chrome  
+✅ **Testing** — 73 unit/component tests (Vitest + RTL) + Playwright visual regression  
 ✅ **Type-Safe** — End-to-end type safety with TypeScript + Zod  
-✅ **Production-Ready** — Health checks, error handling, middleware protection
+✅ **Production-Ready** — Health checks, error handling, proxy-based route protection
 
 ## Tech Stack
 
-| Category      | Technology           | Version |
-| ------------- | -------------------- | ------- |
-| Framework     | Next.js (App Router) | 15.x    |
-| Language      | TypeScript           | 5.7+    |
-| Styling       | Tailwind CSS         | 3.4     |
-| UI Components | Shadcn/ui pattern    | -       |
-| Database      | Drizzle ORM + SQLite | 0.38+   |
-| Auth          | JWT (jsonwebtoken)   | 9.x     |
-| Validation    | Zod                  | 3.24+   |
-| State         | Zustand              | 5.x     |
-| Testing       | Vitest + RTL         | 2.1     |
+| Category      | Technology                  | Version |
+| ------------- | --------------------------- | ------- |
+| Framework     | Next.js (App Router)        | 16.x    |
+| Language      | TypeScript                  | 6.0     |
+| Styling       | Tailwind CSS                | 4.x     |
+| UI Components | Shadcn/ui pattern           | -       |
+| Database      | Drizzle ORM + Neon Postgres | 0.45    |
+| DB Driver     | @neondatabase/serverless    | 1.x     |
+| Auth          | JWT (jsonwebtoken)          | 9.x     |
+| Passwords     | bcryptjs                    | 3.x     |
+| Validation    | Zod                         | 4.x     |
+| State         | Zustand                     | 5.x     |
+| Testing       | Vitest + RTL                | 4.x     |
+| E2E / Visual  | Playwright                  | 1.x     |
 
-## Quick Start
+## Database
 
-```bash
-# Install dependencies
-npm install
+`src/db/connection.ts` is **Neon-Postgres-only** (`drizzle-orm/neon-http` over `@neondatabase/serverless`). The previous `better-sqlite3` + `./data/dev.db` path was dropped when migrating to a network DB — SQLite file semantics don't survive Vercel's serverless runtime.
 
-# If Node 24 cannot load better-sqlite3 on your machine
-npm run native:sqlite:ensure
-
-# Run database migrations
-npm run db:migrate
-
-# Seed with sample data
-npm run db:seed
-
-# Start development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to see the application.
+- **Connection:** resolved from `POSTGRES_URL`, falling back to `DATABASE_URL` (Vercel's Neon integration injects both on Preview + Production).
+- **Local dev:** `vercel env pull .env.local`, or point `POSTGRES_URL` at any Postgres instance.
+- **Lazy connection:** importing `src/db` does not require env vars — only actual query execution does, so typecheck/lint/tests run without a live database.
+- **Migrations:** `npm run db:migrate` runs `src/db/migrate.ts` (idempotent inline DDL). `npm run db:seed` migrates first, then seeds sample users/posts. `drizzle-kit` is configured (`drizzle.config.ts`, `dialect: postgresql`) for `db:generate` and `db:studio`.
 
 ### First Steps After Installation
 
 1. **Create your first user:**
    - Navigate to [http://localhost:3000/register](http://localhost:3000/register)
    - Register with email/password
-   - JWT token automatically stored in httpOnly cookie
+   - JWT token stored as a cookie
 
 2. **Access protected dashboard:**
    - Login at [http://localhost:3000/login](http://localhost:3000/login)
@@ -135,7 +136,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 ```text
 src/
 ├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout with Navbar + Footer
+│   ├── layout.tsx         # Root layout with chrome (nav + footer)
 │   ├── page.tsx           # Home page (hero + features)
 │   ├── not-found.tsx      # 404 page
 │   ├── login/page.tsx     # Login form (client component)
@@ -147,14 +148,20 @@ src/
 │       ├── posts/         # GET/POST /posts, GET/PATCH/DELETE /posts/[id]
 │       └── health/        # GET /health
 ├── components/
-│   ├── ui/                # Button, Input, Card, Badge, Spinner
-│   └── layout/            # Navbar, Footer
-├── db/                    # Drizzle schema, connection, migrations, seed
+│   ├── ui/                # Button, Input, Card, Badge, Spinner, Sheet,
+│   │                      # DropdownMenu, Separator + dcyfr-* variants
+│   ├── chrome/            # SiteNav, SiteFooter, PageShell, ThemeSwitcher
+│   ├── hero/              # Agent-network hero (react-three-fiber scene)
+│   └── theme-provider.tsx # next-themes provider
+├── db/                    # Drizzle schema, Neon connection, migrate, seed
 ├── hooks/                 # useDebounce, useLocalStorage, useMediaQuery
 ├── lib/                   # Auth, errors, utils, schemas
 ├── services/              # UserService, PostService
 ├── stores/                # Zustand stores (auth, theme)
-└── middleware.ts           # Route protection middleware
+└── proxy.ts               # Route protection (Next 16 proxy, formerly middleware)
+
+e2e/                       # Playwright visual-regression snapshots
+tests/                     # Vitest unit/component tests
 ```
 
 ## Pages
@@ -183,54 +190,57 @@ src/
 
 ## Authentication
 
-JWT-based auth with cookie storage for SSR middleware:
+JWT-based auth with cookie storage for SSR route protection:
 
 ```typescript
-// Login stores token as cookie
+// Login/register store the token as a cookie (client-side)
 document.cookie = `token=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}`;
 
-// Middleware checks cookie for /dashboard routes
+// src/proxy.ts checks the cookie for /dashboard routes
 // API routes check Authorization: Bearer <token> header
 ```
+
+Passwords are hashed with **bcryptjs** (10 rounds) in `src/lib/auth.ts`.
 
 ## UI Components
 
 Shadcn/ui-compatible components with CSS variables for theming:
 
-- **Button** — 6 variants (default, destructive, outline, secondary, ghost, link) × 4 sizes
+- **Button** — 6 variants (default, destructive, outline, secondary, ghost, link)
 - **Input** — With error state display
 - **Card** — Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter
-- **Badge** — 4 variants (default, secondary, destructive, outline)
-- **Spinner** — 3 sizes with sr-only loading text
+- **Badge**, **Spinner**, **Sheet**, **DropdownMenu**, **Separator**
+- **dcyfr-\*** — DCYFR-branded Button/Badge/Card/Skeleton variants
+- **Chrome** — SiteNav, SiteFooter, PageShell, ThemeSwitcher (`src/components/chrome/`)
 
 ## Environment Variables
 
+These are the variables the code actually reads (see `.env.example`):
+
 ```env
-NODE_ENV=development
-PORT=3000
-DATABASE_URL=./data/dev.db
-JWT_SECRET=your-secret-key
+# Database — required for db-backed routes, migrations, and seeding.
+# Vercel's Neon integration injects POSTGRES_URL + DATABASE_URL automatically;
+# locally, run `vercel env pull .env.local` or set your own Postgres URL.
+POSTGRES_URL=postgresql://user:password@host/database?sslmode=require
+# DATABASE_URL is accepted as a fallback alias for POSTGRES_URL.
+
+# Authentication (defaults exist for dev; always set JWT_SECRET in production)
+JWT_SECRET=your-secret-key-change-in-production
 JWT_EXPIRES_IN=7d
-NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
+
+For Playwright snapshot runs, `BASE_URL` selects the target (defaults to `http://localhost:3000`; see [e2e/README.md](e2e/README.md)).
 
 ## Testing
 
 ```bash
-npm run test:run        # Run all tests (73 tests)
+npm run test:run        # Run all unit/component tests (73 tests)
 npm run test            # Watch mode
 npm run test:coverage   # With coverage report
+
+npm run test:e2e        # Playwright tests
+npm run test:snapshots  # Visual-regression snapshots (chromium)
 ```
-
-### Native SQLite note
-
-On some Node 24 Linux/macOS environments, `better-sqlite3` may need a native rebuild before database-backed tasks can run. Use:
-
-```bash
-npm run native:sqlite:ensure
-```
-
-The script automatically prefers `clang`/`clang++` when available, which avoids the GCC 13 internal compiler error we have seen while compiling SQLite from source.
 
 ### Test Coverage
 
@@ -247,19 +257,23 @@ The script automatically prefers `clang`/`clang++` when available, which avoids 
 | components/card          | 2     | Composition pattern               |
 | components/badge+spinner | 6     | Variants, sizes, accessibility    |
 
+### Visual Regression
+
+Playwright snapshot tests live in `e2e/` and run against the public preview at <https://dcyfr-ai-web.vercel.app/> or a local dev server. Baseline capture and tolerance notes: [e2e/README.md](e2e/README.md). CI runs them via `.github/workflows/visual-regression.yml`.
+
 ## Patterns
 
 ### Server vs Client Components
 
 - **Default to Server Components** (no `'use client'` directive) for better performance
 - **Client Components only when needed:** Forms, event handlers, browser APIs, React hooks
-- Middleware handles authentication for protected Server Components
+- `src/proxy.ts` handles authentication for protected Server Components
 
 ### Database Access
 
 - **Service layer pattern** — `UserService`, `PostService` isolate DB logic
-- **Drizzle ORM** for type-safe queries with `better-sqlite3` (dev) or PostgreSQL (production)
-- **Migrations** managed with Drizzle Kit (`npm run db:generate`, `npm run db:migrate`)
+- **Drizzle ORM** for type-safe queries over the Neon serverless driver
+- **Migrations** via `npm run db:migrate` (inline DDL) + Drizzle Kit (`npm run db:generate`, `npm run db:studio`)
 
 ### Zod Validation
 
@@ -271,10 +285,11 @@ The script automatically prefers `clang`/`clang++` when available, which avoids 
 
 Comprehensive guides available in `docs/` directory:
 
-- **[DATABASE.md](docs/DATABASE.md)** — Drizzle ORM patterns, migrations, PostgreSQL migration
-- **[AUTHENTICATION.md](docs/AUTHENTICATION.md)** — JWT implementation, middleware, security
+- **[DATABASE.md](docs/DATABASE.md)** — Drizzle ORM patterns and migrations
+- **[AUTHENTICATION.md](docs/AUTHENTICATION.md)** — JWT implementation, route protection, security
 - **[API_ROUTES.md](docs/API_ROUTES.md)** — Route handlers, validation, error handling
-- **[DEPLOYMENT.md](docs/DEPLOYMENT.md)** — Vercel, Railway, Docker, Kubernetes deployment
+- **[API.md](docs/API.md)** — API reference
+- **[DEPLOYMENT.md](docs/DEPLOYMENT.md)** — Deployment guides
 
 ## Examples
 
@@ -320,76 +335,65 @@ npm i -g vercel
 # Deploy
 vercel
 
-# Set environment variables in Vercel dashboard
-# DATABASE_URL, JWT_SECRET, REFRESH_TOKEN_SECRET
+# Add the Neon (Postgres) integration to the project —
+# it injects POSTGRES_URL/DATABASE_URL automatically.
+# Set JWT_SECRET in the Vercel dashboard.
 ```
-
-### Docker Deployment
-
-```bash
-# Build image
-docker build -t my-nextjs-app .
-
-# Run with docker-compose
-docker-compose up -d
-```
-
-See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for complete deployment guides (Vercel, Railway, Docker, Kubernetes).
 
 ### Production Environment Variables
 
 ```env
 NODE_ENV=production
-DATABASE_URL=postgresql://user:password@host:5432/database
+POSTGRES_URL=postgresql://user:password@host/database?sslmode=require
 JWT_SECRET=min-32-char-secure-random-string
-REFRESH_TOKEN_SECRET=another-secure-random-string
-NEXT_PUBLIC_APP_URL=https://yourdomain.com
+JWT_EXPIRES_IN=7d
 ```
 
 ## Security Best Practices
 
-✅ **JWT stored in httpOnly cookies** prevents XSS attacks  
-✅ **Password hashing with bcrypt** (12 rounds)  
+✅ **Password hashing with bcryptjs** (10 rounds)  
 ✅ **Zod validation** for all API inputs  
-✅ **CORS configuration** for API routes  
-✅ **Rate limiting** recommended for auth endpoints  
-✅ **Environment variable validation** with Zod schemas
+✅ **Proxy-based route protection** for `/dashboard`  
+✅ **Rate limiting** recommended for auth endpoints (not included)
 
-See [AUTHENTICATION.md](docs/AUTHENTICATION.md) for complete security guide.
+See [AUTHENTICATION.md](docs/AUTHENTICATION.md) for the complete security guide.
 
 ## Performance
 
 ⚡ **Server Components by default** — Reduced JavaScript bundle size  
 ⚡ **Drizzle ORM** — Minimal runtime overhead, type-safe queries  
 ⚡ **Automatic code splitting** with Next.js App Router  
-⚡ **Static generation** for blog pages (ISR-ready)  
-⚡ **Database connection pooling** for production PostgreSQL
+⚡ **Neon serverless driver** — Postgres over HTTP, suited to serverless runtimes
 
 ## Scripts
 
 ```bash
 # Development
 npm run dev              # Start dev server
-npm run dev:debug        # Debug mode
-
-# Building
 npm run build            # Production build
 npm run start            # Serve production build
 npm run lint             # ESLint check
 npm run lint:fix         # Auto-fix linting issues
+npm run format           # Prettier write
+npm run typecheck        # TypeScript check
 
 # Database
-npm run db:generate      # Generate migrations
-npm run db:migrate       # Run migrations
-npm run db:push          # Push schema changes (dev)
-npm run db:seed          # Seed sample data
+npm run db:generate      # Generate migrations (drizzle-kit)
+npm run db:migrate       # Run migrations (src/db/migrate.ts)
+npm run db:seed          # Migrate + seed sample data
 npm run db:studio        # Open Drizzle Studio
 
 # Testing
-npm run test             # Watch mode
+npm run test             # Vitest watch mode
 npm run test:run         # Run all tests
 npm run test:coverage    # With coverage report
-npm run test:ui          # Vitest UI
+npm run test:e2e         # Playwright tests
+npm run test:e2e:ui      # Playwright UI mode
+npm run test:snapshots   # Visual-regression snapshots
+npm run test:snapshots:update  # Refresh snapshot baselines
+
+# Examples
+npm run examples:test    # Type-check examples
 ```
 
 ## Troubleshooting
@@ -397,10 +401,10 @@ npm run test:ui          # Vitest UI
 ### Database Connection Issues
 
 ```
-Error: Database is locked
+Error: POSTGRES_URL (or DATABASE_URL) is not set.
 ```
 
-**Solution:** SQLite doesn't support concurrent writes. Use PostgreSQL for production.
+**Solution:** Pull env vars from Vercel with `vercel env pull .env.local`, or set `POSTGRES_URL` to a Neon / Postgres connection string.
 
 ### JWT Verification Fails
 
@@ -408,7 +412,7 @@ Error: Database is locked
 Error: jwt malformed
 ```
 
-**Solution:** Ensure `JWT_SECRET` environment variable is set correctly.
+**Solution:** Ensure `JWT_SECRET` environment variable is set correctly (and matches the secret used to sign the token).
 
 ### Module Not Found
 
@@ -443,6 +447,7 @@ Ensure all tests pass (`npm run test:run`) and code is linted (`npm run lint`).
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Drizzle ORM Documentation](https://orm.drizzle.team)
+- [Neon Documentation](https://neon.tech/docs)
 - [Shadcn/ui Components](https://ui.shadcn.com)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Zod Documentation](https://zod.dev)
