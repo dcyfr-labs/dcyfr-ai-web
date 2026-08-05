@@ -99,7 +99,7 @@
   },
   "homepage": "https://github.com/dcyfr-labs/dcyfr-ai-web#readme",
   "overrides": {
-    "postcss": "^8.5.10",
+    "postcss": "$postcss",
     "path-to-regexp": "^6.3.0",
     "minimatch": ">=9.0.7",
     "fast-uri": "^3.1.4",
